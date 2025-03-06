@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>DashBoard</title>
 </head>
 <body>
-$END$
+<h1 style="display:inline">DashBoard</h1>
+<a href="/logout"><p style="display:inline">logout</p></a>
+<h2>You are login</h2>
+<form action="/sendMessage" method="post">
+    <p>Destinataire</p>
+    <input type="text" name="username">
+    <p>Message</p>
+    <input type="text" name="message">
+    <input type="submit">
+</form>
+<table style="width:100%">
+    <tr>
+        <th>Emetteur</th>
+        <th>Message</th>
+        <th width="50pixels">Delete</th>
+    </tr>
+    {% for message in listMessage %}
+    <tr>
+        <td>{{message.emetteur}}</td>
+        <td>{{message.content}}</td>
+        <td><a href="/deleteMessage/{{message.id}}"><img src="/image/garbage.png" width="50" height="50"></a></td>
+    </tr>
+    {% endfor %}
+</table>
 </body>
 </html>
